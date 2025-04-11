@@ -8,9 +8,11 @@
         "build": "nest build"
     },
     "dependencies": {
+        "@grpc/grpc-js": "^1.13.3",
         "@nestjs/common": "^11.0.15",
         "@nestjs/core": "^11.0.15",
         "@nestjs/jwt": "^11.0.0",
+        "@nestjs/microservices": "^11.0.15",
         "@nestjs/passport": "^11.0.5",
         "@nestjs/platform-express": "^11.0.15",
         "bcrypt": "^5.1.1",

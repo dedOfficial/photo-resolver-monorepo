@@ -1,0 +1,25 @@
+{
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "Frontend for Image Upload Project",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview --host"
+    },
+    "dependencies": {
+        "@tanstack/react-query": "^5.72.2",
+        "axios": "^1.8.4",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "react-router-dom": "^7.5.0"
+    },
+    "devDependencies": {
+        "@types/react": "^19.1.0",
+        "@types/react-dom": "^19.1.2",
+        "@types/react-router-dom": "^5.3.3",
+        "@vitejs/plugin-react": "^4.3.4",
+        "typescript": "^5.8.3",
+        "vite": "^6.2.6"
+    }
+}

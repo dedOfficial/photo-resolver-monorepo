@@ -22,20 +22,6 @@ export class ImageController {
     this.imageService = this.client.getService<ImageService>('ImageService');
   }
 
-  // @Post('upload')
-  // @UseInterceptors(FileInterceptor('file'))
-  // async uploadImage(@UploadedFile() file: Express.Multer.File, @Req() req: Request) {
-  //   if (!file) {
-  //     throw new BadRequestException('Файл не передан. Убедитесь, что отправляете запрос с multipart/form-data и поле называется "file"');
-  //   }
-  //   // В реальном приложении userId должны получаться из JWT; для демонстрации используем фиксированный id
-  //   const userId = 'user123';
-  //   const originalName = file.originalname;
-  //   const buffer = file.buffer;
-  //   const response = await this.imageService.UploadImage({ userId, image: buffer, originalName }).toPromise();
-  //   return response;
-  // }
-
   // Применяем JWT-гард, чтобы req.user заполнялся автоматически
   @Post('upload')
   @UseGuards(AuthGuard('jwt'))

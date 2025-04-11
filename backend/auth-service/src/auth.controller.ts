@@ -1,11 +1,12 @@
 import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { GrpcMethod } from '@nestjs/microservices';
 
-@Controller('auth')
+@Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   
-  @Post('register')
+  @GrpcMethod('AuthService', 'Register')
   async register(@Body() body: { email: string; password: string; confirmPassword: string }) {
     if (body.password !== body.confirmPassword) {
       throw new UnauthorizedException('Пароли не совпадают');
@@ -14,7 +15,7 @@ export class AuthController {
     return { message: 'Пользователь зарегистрирован', user };
   }
   
-  @Post('login')
+  @GrpcMethod('AuthService', 'Login')
   async login(@Body() body: { email: string; password: string }) {
     return this.authService.login(body.email, body.password);
   }

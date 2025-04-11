@@ -21,13 +21,13 @@ export class AuthService {
     return user;
   }
 
-  async login(email: string, password: string): Promise<{ accessToken: string }> {
+  async login(email: string, password: string): Promise<{ accessToken: string; user: { sub: string, email: string } }> {
     const user = this.users.get(email);
     if (!user || !(await bcrypt.compare(password, user.password))) {
       throw new UnauthorizedException('Неверные учетные данные');
     }
     const payload = { sub: user.id, email };
     const accessToken = this.jwtService.sign(payload);
-    return { accessToken };
+    return { accessToken, user: payload };
   }
 }

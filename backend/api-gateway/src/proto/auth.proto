@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package auth;
+
+// Определение сервиса для аутентификации
+service AuthService {
+  // Метод регистрации пользователя
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  // Метод логина
+  rpc Login(LoginRequest) returns (LoginResponse);
+}
+
+// Сообщение запроса на регистрацию
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  string confirmPassword = 3;
+}
+
+// Сообщение ответа на регистрацию
+message RegisterResponse {
+  string message = 1;
+  User user = 2;
+}
+
+// Сообщение запроса на логин
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+// Сообщение ответа на логин
+message LoginResponse {
+  string accessToken = 1;
+}
+
+// Определение пользователя
+message User {
+  string id = 1;
+  string email = 2;
+}
