@@ -1,0 +1,32 @@
+{
+    "name": "auth-service",
+    "version": "1.0.0",
+    "description": "Auth Service for Image Upload Project",
+    "main": "dist/main.js",
+    "scripts": {
+        "start": "nest start",
+        "build": "nest build"
+    },
+    "dependencies": {
+        "@nestjs/common": "^11.0.15",
+        "@nestjs/core": "^11.0.15",
+        "@nestjs/jwt": "^11.0.0",
+        "@nestjs/passport": "^11.0.5",
+        "@nestjs/platform-express": "^11.0.15",
+        "bcrypt": "^5.1.1",
+        "passport": "^0.7.0",
+        "passport-jwt": "^4.0.1",
+        "reflect-metadata": "^0.2.2",
+        "rxjs": "^7.8.2",
+        "uuid": "^11.1.0"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "^11.0.6",
+        "@nestjs/schematics": "^11.0.5",
+        "@types/bcrypt": "^5.0.2",
+        "@types/passport": "^1.0.17",
+        "@types/passport-jwt": "^4.0.1",
+        "@types/uuid": "^10.0.0",
+        "typescript": "^5.8.3"
+    }
+}

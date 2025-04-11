@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: photo-resolver
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    restart: always
+    environment:
+      MINIO_ROOT_USER: minioadmin1
+      MINIO_ROOT_PASSWORD: minioadmin1
+    ports:
+      - "9000:9000"
+    command: server /data
+
+  auth-service:
+    build: ./backend/auth-service
+    container_name: auth-service
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    environment:
+      JWT_SECRET: very-very-strong-secret
+
+  image-processing-service:
+    build: ./backend/image-processing-service
+    container_name: image-processing-service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - postgres
+      - redis
+      - minio
+    environment:
+      MINIO_ROOT_USER: minioadmin1
+      MINIO_ROOT_PASSWORD: minioadmin1
+
+  api-gateway:
+    build: ./backend/api-gateway
+    container_name: api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth-service
+      - image-processing-service
+      - postgres
+      - redis
+      - minio
+    environment:
+      JWT_SECRET: very-very-strong-secret
+
+volumes:
+  postgres-data:

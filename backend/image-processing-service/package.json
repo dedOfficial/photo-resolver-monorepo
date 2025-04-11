@@ -1,0 +1,32 @@
+{
+    "name": "image-processing-service",
+    "version": "1.0.0",
+    "description": "Image Processing Service",
+    "main": "dist/main.js",
+    "scripts": {
+        "start": "nest start",
+        "build": "nest build"
+    },
+    "dependencies": {
+        "@grpc/grpc-js": "^1.13.3",
+        "@nestjs/bull": "^11.0.2",
+        "@nestjs/common": "^11.0.15",
+        "@nestjs/core": "^11.0.15",
+        "@nestjs/microservices": "^11.0.15",
+        "@nestjs/typeorm": "^11.0.0",
+        "bullmq": "^5.48.1",
+        "minio": "^8.0.5",
+        "pg": "^8.14.1",
+        "reflect-metadata": "^0.2.2",
+        "rxjs": "^7.8.2",
+        "sharp": "^0.34.1",
+        "typeorm": "^0.3.22",
+        "uuid": "^11.1.0"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "^11.0.6",
+        "@nestjs/schematics": "^11.0.5",
+        "@types/uuid": "^10.0.0",
+        "typescript": "^5.8.3"
+    }
+}
